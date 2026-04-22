@@ -25,6 +25,7 @@ class HostSystem(enum.IntEnum):
 class GUIFramework(enum.StrEnum):
     # enum.auto() will tolower the values
     Qt = "Qt"
+    QtQuick = "QtQuick"
     AppKit = "AppKit"
     Gtk = "Gtk"
     Android = "Android"
@@ -91,10 +92,10 @@ class Platform:
         Keep in sync with Meta/CMake/gui_framework.cmake
         """
         if self.host_system == HostSystem.macOS:
-            return [GUIFramework.Qt, GUIFramework.AppKit]
+            return [GUIFramework.Qt, GUIFramework.QtQuick, GUIFramework.AppKit]
         if self.host_system in (HostSystem.Linux, HostSystem.BSD):
-            return [GUIFramework.Qt, GUIFramework.Gtk]
-        return [GUIFramework.Qt]
+            return [GUIFramework.Qt, GUIFramework.QtQuick, GUIFramework.Gtk]
+        return [GUIFramework.Qt, GUIFramework.QtQuick]
 
     def default_gui_framework(self) -> GUIFramework:
         if self.host_system == HostSystem.macOS:
