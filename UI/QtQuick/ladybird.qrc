@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qt/qml/org/ladybird/QtQuick">
+        <file>Main.qml</file>
+        <file>qmldir</file>
+    </qresource>
+</RCC>
